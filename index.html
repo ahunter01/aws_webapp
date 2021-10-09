@@ -16,17 +16,117 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-markdown>
-					<textarea data-template>
-					## Slide 1
-					A paragraph with some text and a [link](http://hakim.se).
-					---
-					## Slide 2
-					---
-					## Slide 3
-					---
-					## Slide 4
-					</textarea>
+				<section>
+					How to Deploy a Static Website on AWS EC2
+				</section>
+				<section>
+					<p>Log into your AWS account</p>
+				</section>
+				<section>
+					<p>Launch an EC2 instance... </p>
+				</section>
+				<section>
+					<p>Select the Amazon Linux 2 AMI</p>
+				</section>
+				<section>
+					<p>Choose a t2.micro instance type</p>
+				</section>
+				<section>
+					<p>Leave configuration instance details as default</p>
+				</section>
+				<section>
+					<p>Leave storage as default</p>
+				</section>
+				<section>
+					<p>Leave tags as default</p>
+				</section>
+				<section>
+					<p>Add two rules on Configure Security Group</p>
+					<ul>
+						<li>One with type HTTP and one with type HTTPS</li>
+						<li>Leave everything else default</li>
+					</ul>
+				</section>
+				<section>
+					<p>Click review and launch and then launch</p>
+				</section>
+				<section>
+					<p>Choose create a new key pair and add a name</p>
+					<p>Download the key pair</p>
+				</section>
+				<section>
+					<p>Click launch instance</p>
+				</section>
+				<section>
+					<p>🎉 congrats! you have launched an EC2 instance 🎉</p>
+				</section>
+				<section>
+					<p>Open terminal and ssh into your ec2 instance using :</p>
+					<pre><code data-trim data-noescape>
+						ssh -i "your-key_pair.pem" ec2-user@"Public ipv4 DN"
+					</code></pre>
+				</section>
+				<section>
+					<p>Elevate your privileges</p>
+					<pre><code data-trim data-noescape>
+						sudo su
+					</code></pre>
+					<p>Update all of the packages on the instance</p>
+					<pre><code data-trim data-noescape>
+						yum update -y
+					</code></pre>
+				</section>
+				<section>
+					<p>Install an apache webserver</p>
+					<pre><code data-trim data-noescape>
+						yum install httpd -y
+					</code></pre>
+					<p>Start the webserver</p>
+					<pre><code data-trim data-noescape>
+						service httpd start
+					</code></pre>
+				</section>
+				<section>
+					<p>Check if the server is working</p>
+					<ul>
+						<li>Navigate to your instance on the AWS console</li>
+						<li>Click the public IPv4 address</li>
+					</ul>
+				</section>
+				<section>
+					<p>If you see this page then Congrats 🎉</p>
+				</section>
+				<section>
+					<p>Navigate to this directory :</p>
+					<pre><code data-trim data-noescape>
+						cd /var/www/html 
+					</code></pre>
+					<p>Create an index.html file :</p>
+					<pre><code data-trim data-noescape>
+						nano index.html
+					</code></pre>
+				</section>
+				<section>
+					<p>Add some content to your file :</p>
+					<pre><code data-trim data-noescape>
+						&lt;html&gt;
+							&lt;body&gt;
+								&lt;p&gt;I can't beleive this is running!!&lt;/p&gt;
+							&lt;/body&gt;
+						&lt;/html&gt;
+					</code></pre>
+					<p>Save the file.</p>
+				</section>
+				<section>
+					<p>Check your new webpage :</p>
+					<ul>
+						<li>Navigate to your instance on the AWS console</li>
+						<li>Click the public IPv4 address</li>
+					</ul>
+				</section>
+				<section>
+					<p>If you see your page then Congrats 🎉</p>
+					<p>You have deployed a Static Website on AWS EC2</p>
 				</section>
 			</div>
 		</div>
